@@ -20,8 +20,7 @@ export default function ProductDetails({ products }: ProductDetailsProps) {
   const [showPromotions, setShowPromotions] = useState(true);
 
   const getValidImages = (images: string[] | undefined) => {
-    const filtered = images?.filter(img => img && img.trim() !== '') || [];
-    return filtered.reverse();
+    return images?.filter(img => img && img.trim() !== '') || [];
   };
 
   const formatDate = (timestamp: number) => {
@@ -220,7 +219,7 @@ export default function ProductDetails({ products }: ProductDetailsProps) {
       </div>
       {filteredProductEntries.map(([store, product]) => (
         <div key={store} id={(product.store || store).toUpperCase()} className="govuk-!-margin-bottom-4">
-          <div className="govuk-panel govuk-panel--confirmation" style={{ backgroundColor: '#1d70b8', padding: '15px' }}>
+          <div className="govuk-panel govuk-panel--confirmation govuk-!-padding-3" style={{ backgroundColor: '#1d70b8', textAlign: 'left' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div>
                 <h3 className="govuk-panel__title" style={{ fontSize: '1.5rem', marginBottom: 0 }}>
@@ -258,7 +257,11 @@ export default function ProductDetails({ products }: ProductDetailsProps) {
               <div className="govuk-grid-column-one-half" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 {(() => {
                   const validImages = getValidImages(product.images);
-                  if (validImages.length === 0) return null;
+                  if (validImages.length === 0) return (
+                    <div style={{ position: 'relative', aspectRatio: '1/1', width: '100%', maxWidth: '320px', backgroundColor: '#f3f2f1', border: '1px solid #b1b4b6', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <span className="govuk-body-s" style={{ color: '#505a5f' }}>Image Unavailable</span>
+                    </div>
+                  );
 
                   const imageSrc = validImages[selectedImage[store] || 0];
                   if (!imageSrc) return null;
@@ -478,7 +481,7 @@ export default function ProductDetails({ products }: ProductDetailsProps) {
 
                   {product.quantity > 0 && (
                     <p className="govuk-body-s" style={{ color: '#505a5f', marginBottom: '5px' }}>
-                      Min. Stock: {product.quantity}
+                      Minimum Stock: {product.quantity}
                     </p>
                   )}
                   {product.quantity === 0 && (

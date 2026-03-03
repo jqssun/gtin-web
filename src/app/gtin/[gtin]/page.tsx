@@ -95,10 +95,8 @@ export default function GTINPage({ params }: PageProps) {
   useEffect(() => {
     params.then(({ gtin: gtinParam }) => {
       setGtin(gtinParam);
-      if (gtinParam) {
-        document.title = `${gtinParam} - Search GTIN`;
-        fetchProductData(gtinParam);
-      }
+      document.title = `${gtinParam} - Search GTIN`;
+      fetchProductData(gtinParam);
     });
   }, [params]);
 

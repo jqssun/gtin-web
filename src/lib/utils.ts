@@ -1,3 +1,5 @@
+import { GTIN_MAX_LENGTH } from './types';
+
 const storeNameMap: Record<string, string> = {
   asda: 'Asda',
   boots: 'Boots',
@@ -26,7 +28,18 @@ export function getCurrencySymbol(currency: string): string {
   return currencySymbolMap[currency] || currency;
 }
 
+export function sanitizeGtinInput(value: string): string {
+  return value.replace(/\D/g, '').slice(0, GTIN_MAX_LENGTH);
+}
+
 export function openPrivateLink(url: string): void {
+  try {
+    const parsed = new URL(url);
+    if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') return;
+  } catch {
+    return;
+  }
+
   const link = document.createElement('a')
   link.href = url
   link.target = '_blank'

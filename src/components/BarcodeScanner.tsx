@@ -1,5 +1,6 @@
 'use client';
 
+import { sanitizeGtinInput } from '@/lib/utils';
 import { BrowserMultiFormatReader } from '@zxing/library';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -31,6 +32,10 @@ export default function BarcodeScanner({ onScan, isLoading }: BarcodeScannerProp
       onScan(input.trim());
       setInput('');
     }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(sanitizeGtinInput(e.target.value));
   };
 
   const stopScanning = useCallback(() => {
@@ -164,9 +169,11 @@ export default function BarcodeScanner({ onScan, isLoading }: BarcodeScannerProp
     if (file.name.toLowerCase().endsWith('.heic')) {
       try {
         const heic2any = (await import('heic2any')).default;
-        const blob = await heic2any({ blob: file, toType: 'image/jpeg' });
-        fileToScan = new File([Array.isArray(blob) ? blob[0] : blob], file.name.replace(/\.heic$/i, '.jpg'), { type: 'image/jpeg' });
+        const result = await heic2any({ blob: file, toType: 'image/jpeg' });
+        const converted = Array.isArray(result) ? result[0] : result;
+        fileToScan = new File([converted], file.name.replace(/\.heic$/i, '.jpg'), { type: 'image/jpeg' });
       } catch {
+        setScanError('Could not convert HEIC image. Please try a different format.');
         return;
       }
     }
@@ -356,8 +363,10 @@ export default function BarcodeScanner({ onScan, isLoading }: BarcodeScannerProp
           id="gtin-input"
           type="text"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={handleInputChange}
           disabled={isLoading}
+          inputMode="numeric"
+          maxLength={14}
           className="govuk-input"
         />
 

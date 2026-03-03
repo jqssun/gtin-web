@@ -10,6 +10,8 @@ export interface Promotion {
   new_price?: number;
 }
 
+export const GTIN_MAX_LENGTH = 14;
+
 export interface GTINRequest {
   gtin: string;
   raw: boolean;
