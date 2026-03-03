@@ -14,17 +14,18 @@
     "@zxing/library": "^0.21.3",
     "heic2any": "^0.0.4",
     "jsbarcode": "^3.12.3",
-    "next": "^15.5.12",
+    "next": "^16.1.6",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.3",
-    "@types/node": "^20.19.33",
-    "@types/react": "^19.2.13",
+    "@eslint/eslintrc": "^3.3.4",
+    "@types/node": "^25.3.3",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "eslint": "^9.39.2",
-    "eslint-config-next": "^15.5.12",
+    "eslint": "^10.0.2",
+    "eslint-config-next": "^16.1.6",
     "typescript": "^5.9.3"
   }
 }

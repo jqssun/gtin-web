@@ -164,6 +164,11 @@ export default function BarcodeScanner({ onScan, isLoading }: BarcodeScannerProp
     const file = event.target.files?.[0];
     if (!file) return;
 
+    if (file.size > 100 * 1024 * 1024) {
+      setScanError('File is larger than 100MB.');
+      return;
+    }
+
     let fileToScan = file;
 
     if (file.name.toLowerCase().endsWith('.heic')) {
@@ -171,6 +176,7 @@ export default function BarcodeScanner({ onScan, isLoading }: BarcodeScannerProp
         const heic2any = (await import('heic2any')).default;
         const result = await heic2any({ blob: file, toType: 'image/jpeg' });
         const converted = Array.isArray(result) ? result[0] : result;
+        if (!converted) throw new Error();
         fileToScan = new File([converted], file.name.replace(/\.heic$/i, '.jpg'), { type: 'image/jpeg' });
       } catch {
         setScanError('Could not convert HEIC image. Please try a different format.');
