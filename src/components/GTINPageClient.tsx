@@ -21,7 +21,7 @@ export default function GTINPageClient({ gtin, products, error }: GTINPageClient
 
   const handleScan = (newGtin: string) => {
     if (newGtin !== gtin) {
-      router.push(`/gtin/${newGtin}`);
+      router.push(`/${newGtin}`);
     }
   };
 

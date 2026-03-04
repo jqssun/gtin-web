@@ -7,7 +7,7 @@ export default function SearchPage() {
   const router = useRouter();
 
   const handleScan = (gtin: string) => {
-    router.push(`/gtin/${gtin}`);
+    router.push(`/${gtin}`);
   };
 
   return (

@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from 'next/server';
 const VALID_ROUTES = [
   /^\/$/,
   /^\/search$/,
-  new RegExp(`^\\/gtin\\/\\d{1,${GTIN_MAX_LENGTH}}$`),
+  new RegExp(`^\\/\\d{1,${GTIN_MAX_LENGTH}}$`),
 ];
 
 export function proxy(request: NextRequest) {

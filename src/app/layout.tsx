@@ -46,7 +46,7 @@ export default function RootLayout({
                 Beta
               </strong>
               <span className="govuk-phase-banner__text">
-                This is a new service. Help us make it better and <a className="govuk-link" href="https://github.com/jqssun/web-gtin-search/pulls" target="_blank">send your improvements</a>.
+                This is a new service. Help us make it better and <a className="govuk-link" href="https://github.com/jqssun/gtin-web/pulls" target="_blank">send your improvements</a>.
               </span>
             </p>
           </div>
@@ -67,7 +67,7 @@ export default function RootLayout({
                     </a>
                   </li>
                   <li className="govuk-footer__inline-list-item">
-                    <a className="govuk-footer__link" href="https://github.com/jqssun/web-gtin-search">
+                    <a className="govuk-footer__link" href="https://github.com/jqssun/gtin-web">
                       Project
                     </a>
                   </li>

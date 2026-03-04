@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { GTINRequest, GTINResponse } from './types';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const API_URL = process.env.API_URL || 'http://localhost:8000';
 
 const PromotionSchema = z.looseObject({
   id: z.string().optional(),
