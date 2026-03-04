@@ -3,6 +3,8 @@ import Link from "next/link";
 import Script from "next/script";
 import "./globals.css";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 export const metadata: Metadata = {
   title: "Search GTIN",
   description: "View product information data using GTIN",
@@ -18,10 +20,10 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="theme-color" content="#0b0c0c" />
-        <link rel="stylesheet" href="/govuk-frontend.min.css" />
-        <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico" />
-        <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml" />
-        <link rel="manifest" href="/assets/manifest.json" />
+        <link rel="stylesheet" href={`${basePath}/govuk-frontend.min.css`} />
+        <link rel="icon" sizes="48x48" href={`${basePath}/assets/images/favicon.ico`} />
+        <link rel="icon" sizes="any" href={`${basePath}/assets/images/favicon.svg`} type="image/svg+xml" />
+        <link rel="manifest" href={`${basePath}/assets/manifest.json`} />
       </head>
       <body className="govuk-template__body js-enabled govuk-frontend-supported">
 
@@ -62,7 +64,7 @@ export default function RootLayout({
                 <h2 className="govuk-visually-hidden">Support links</h2>
                 <ul className="govuk-footer__inline-list">
                   <li className="govuk-footer__inline-list-item">
-                    <a className="govuk-footer__link" href="/">
+                    <a className="govuk-footer__link" href={`${basePath}/`}>
                       Help
                     </a>
                   </li>
@@ -107,7 +109,7 @@ export default function RootLayout({
           </div>
         </footer>
 
-        <Script src="/govuk-frontend.min.js" strategy="afterInteractive" />
+        <Script src={`${basePath}/govuk-frontend.min.js`} strategy="afterInteractive" />
         <Script id="govuk-init" strategy="afterInteractive">
           {`
             if (window.GOVUKFrontend) {

@@ -23,7 +23,7 @@
     font-family: Transport New;
     font-style: normal;
     font-weight: 400;
-    src: url(/assets/fonts/TransportNew-Light.otf) format("opentype"); 
+    src: url(assets/fonts/TransportNew-Light.otf) format("opentype"); 
     size-adjust: 95%;
     font-display: fallback;
 }
@@ -32,7 +32,7 @@
     font-family: Transport New;
     font-style: normal;
     font-weight: 700;
-    src: url(/assets/fonts/TransportNew-Heavy.otf) format("opentype");
+    src: url(assets/fonts/TransportNew-Heavy.otf) format("opentype");
     font-display: fallback
 }
 
@@ -3783,7 +3783,7 @@ screen and (forced-colors:active) {
     display: block;
     width: 100%;
     padding-top: 112px;
-    background-image: url(/assets/images/-crest.svg);
+    background-image: url(assets/images/-crest.svg);
     background-repeat: no-repeat;
     background-position: 50% 0;
     background-size: 125px 102px;
@@ -3794,8 +3794,8 @@ screen and (forced-colors:active) {
 @supports ((-webkit-mask-position:initial) or (mask-position:initial)) {
     .govuk-footer__copyright-logo:before {
         background: currentcolor;
-        -webkit-mask-image: url(/assets/images/-crest.svg);
-        mask-image: url(/assets/images/-crest.svg);
+        -webkit-mask-image: url(assets/images/-crest.svg);
+        mask-image: url(assets/images/-crest.svg);
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-position: 50% 0;
